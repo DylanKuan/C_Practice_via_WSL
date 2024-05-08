@@ -8,8 +8,8 @@ int main(void){
     int a = 3, b = 4;
     printf("a = %d\t b = %d\n", a, b);
     printf("a = %p\t b = %p\n", &a, &b);
-    // swap(&a, &b);
-    swap_bug(&a, &b);
+     swap(&a, &b);
+    //swap_bug(&a, &b);
     printf("a = %d\t b = %d\n", a, b);
     printf("a = %p\t b = %p\n", &a, &b);
     return 0;
