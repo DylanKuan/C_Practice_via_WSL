@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-char* reverseWords1(char* s) {
+char* reverseWords_old(char* s) {
     
     int n = strlen(s), i, j, n_substring = 0, nans = 0;
     char *ans = (char *)malloc(n * sizeof(char));
@@ -29,25 +29,25 @@ char* reverseWords1(char* s) {
     return ans;
 }
 
-char* reverseWords2(char* s) {
+char* reverseWords(char* s) {
     int n = strlen(s), i = n-1, j, nr = 0, k;
-    char *result = (char *)malloc(n * sizeof(char));
+    char *result = (char *)calloc(n+1, sizeof(char));
     while(i>=0){
         while(i >= 0 && s[i] == ' ')
             i--;
-        j = i - 1;
         if(i<0)
             break;
+        j = i - 1;
         while(j>=0 && s[j] != ' ')
             j--;
         if(nr != 0){
             result[nr++] = ' ';
         }
-        //printf("j = %d\t i = %d\n", j, i);
         for(k = j + 1; k<=i; k++)
             result[nr++] = s[k];
         i = j;
     }
+    result[nr] = '\0';
     return result;
 }
 
@@ -59,7 +59,7 @@ int main(void){
     */
     char a[] = "a good   example";
     printf("before : %s\n", a);
-    //char *c = reverseWords1(a);
-    char *c = reverseWords2(a);
+    //char *c = reverseWords_old(a);
+    char *c = reverseWords(a);
     printf("after  : %s\n", c);
 }
